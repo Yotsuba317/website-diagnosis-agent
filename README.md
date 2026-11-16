@@ -8,7 +8,7 @@
 
 ## 0. 推荐：使用网页工作台
 
-进入包含 `run.py` 的内层项目目录，双击 `start-web.cmd`，或在 PowerShell 执行：
+进入仓库根目录（包含 `run.py`），双击 `start-web.cmd`，或在 PowerShell 执行：
 
 ```powershell
 python -B run.py web --open
@@ -166,11 +166,11 @@ JSON 和报告明确标记这种程序辅助；评测另计 `narrative_repair_us
 python run.py evaluate --out results/abc-run-1
 ```
 
-项目默认模型为 `qwen3.5:0.8b`；已保存的 `results/qwen4b-abc/` 历史实验使用
-`qwen3.5:4b-q4_K_M`，不能把默认配置的新运行当成该实验的复现。使用相同模型重新评测：
+本仓库保存的正式实验使用 `qwen3.5:0.8b`，记录位于
+`results/course-abc-qwen35-20261116/`。使用相同模型重新评测：
 
 ```powershell
-python run.py evaluate --model qwen3.5:4b-q4_K_M --out results/qwen4b-abc-rerun
+python run.py evaluate --model qwen3.5:0.8b --out results/course-abc-rerun
 ```
 
 模型需事先在本机可用。历史结果保留原样；代码和 Skill 更新后，需重新评测才能衡量改进，
@@ -235,7 +235,7 @@ python run.py evaluate --engine rules --out results/rules-evaluation
 
 - 正式 A/B/C 评测使用 qwen3.5:0.8b，每组 7 个案例。逐次结果、实际观测、环境配置和 Trace 在 `results/course-abc-qwen35-20261116/`。
 - 网页 HTTP 503 演示使用同一模型的 Skill 模式。对应的实测 JSON 和 Markdown 在 `results/course-web-20261116/`，报告图 4、图 5 的原始截图区域在 `docs/screenshots/`。
-- 项目设计、结果分析和失败复查见 `report.pdf`。
+- 课程报告单独提交，不随 GitHub 仓库上传。设计与开发过程见 `docs/`，正式结果与逐次记录见上述实验目录。
 
 ## 6. 测试
 
@@ -250,25 +250,51 @@ python -m unittest discover -s tests -v
 
 ## 7. 目录
 
+以下为 GitHub 上传版本的主要目录；构建资源和逐次实验记录不逐一展开。
+
 ```text
 website-diagnosis-agent/
-├── run.py                         # CLI 入口
-├── README.md
-├── requirements.txt               # 无第三方 Python 依赖
-├── .env.example
+├── run.py                         # 命令行及网页启动入口
+├── start-web.cmd                  # Windows 网页启动脚本
+├── README.md                      # 项目与运行说明
+├── requirements.txt               # Python 部分无第三方依赖
+├── .env.example                   # 环境变量配置示例
+├── .gitignore                     # 排除缓存、依赖和新运行产物
+├── plot_evaluation.ps1            # 根据评测数据绘制对比图
 ├── src/
+│   ├── __init__.py
 │   ├── agent.py                   # 本地模型适配、实际工具循环、规则测试引擎
 │   ├── tools.py                   # DNS / TCP / TLS / HTTP 探测
 │   ├── lab.py                     # 临时故障服务与模拟夹具
 │   ├── evaluation.py              # 独立评分和公平 A/B/C
 │   ├── report.py                  # 终端、Markdown、JSON 记录
-│   └── validation.py              # 摘要模板和已知文字矛盾校验
+│   ├── validation.py              # 摘要模板和已知文字矛盾校验
+│   └── web.py                     # 本机网页服务、任务和 API
+├── frontend/
+│   ├── src/                      # React 页面、样式与交互源码
+│   ├── dist/                     # 已构建页面，供 Python 直接提供服务
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   └── vite.config.js
+├── docs/
+│   ├── project-introduction.md   # 早期项目介绍与答辩讨论稿
+│   ├── frontend-design.md        # 前端界面设计文档
+│   ├── development-notes.md      # 开发问题、修正及测试记录
+│   └── screenshots/              # 真实网页运行截图
 ├── skills/website-investigation/SKILL.md
 ├── data/cases.json                # 正确标签仅供评测，不输入模型
-├── tests/test_agent.py
-├── tests/test_narrative.py         # 文字矛盾与修正回归测试
-└── results/                       # 运行和评测产物
+├── tests/
+│   ├── test_agent.py              # 工具、Agent 与评测测试
+│   ├── test_narrative.py          # 文字矛盾与修正回归测试
+│   └── test_web.py                # 网页接口与任务测试
+└── results/
+    ├── course-abc-qwen35-20261116/ # 正式 A/B/C 评测、观测及 Trace
+    └── course-web-20261116/       # 真实网页 HTTP 503 演示记录
 ```
+
+`frontend/node_modules/`、`work/` 和 Python 缓存不随仓库上传。`docs/` 中的早期讨论稿
+反映当时的设计和旧实验，不代替本次正式实验记录；当前成绩以 `results/course-abc-qwen35-20261116/` 为准。
 
 ## 8. 当前范围与后续工作
 
