@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+results/*
+!results/.gitkeep
+!results/course-abc-qwen35-20261116/
+!results/course-abc-qwen35-20261116/**
+!results/course-web-20261116/
+!results/course-web-20261116/**
+frontend/node_modules/
+work/
