@@ -1,0 +1,31 @@
+{
+  "engine": "ollama",
+  "model": "qwen3.5:0.8b",
+  "modes": [
+    "baseline",
+    "tools",
+    "skill"
+  ],
+  "case_ids": [
+    "normal",
+    "dns_failure",
+    "tcp_failure",
+    "tls_failure",
+    "http_error",
+    "slow_response",
+    "insufficient_evidence"
+  ],
+  "repeats": 1,
+  "source_sha256": {
+    "src\\__init__.py": "1a668a88074a54011b17a607d70f4b93178f35c4b145e433529da0ae602d9d06",
+    "src\\agent.py": "6c2389640a272262b80010fd20885df683b115bf80e3e50c83249501119bd8ee",
+    "src\\evaluation.py": "1c5a1f3026cb591c98d9d4e18320ff0a416a73d6a43d53ad19488112fd694ced",
+    "src\\lab.py": "525d2f2d123c5353dbb0796a31344f8cdff46ff88232492f08ad45c39744c6d6",
+    "src\\report.py": "7900dd08274c33f5ca1aa2f4a2feecd3daa59e705f4bf7ab2fa401b101b35060",
+    "src\\tools.py": "cefd635aaff00099f08843bb0c99abc3399bba81c2300a6efdc4aa6427c3aba9",
+    "src\\validation.py": "3a9acaf959a8827d62790ce8094a353ead5ca5ec162aa8569cbb862c4e2a1c8f",
+    "src\\web.py": "15d7bb76e3919fc15004a69104cbd5d81f5ced8f0de0c32893ff5617de5278fd",
+    "data\\cases.json": "2f53d5e3298e56a9ef9a1cd01d937e6e3c4943ca89d337b9012df803d4875c8c",
+    "skills\\website-investigation\\SKILL.md": "5bb09d5bc44c49fb4a83f04385651d7e936948115308142103c3be92976c9060"
+  }
+}

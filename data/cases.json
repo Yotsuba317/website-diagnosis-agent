@@ -1,0 +1,72 @@
+[
+  {
+    "id": "normal",
+    "title": "本地网站正常",
+    "fault": "normal",
+    "source": "live_local_lab",
+    "expected": "normal",
+    "incident": "用户此前遇到打不开页面，请确认当前基础访问是否恢复。",
+    "decisive_tool": "check_http",
+    "criterion": "独立实验服务返回 HTTP 200，且响应头等待未达到 800 ms。只判定本次基础请求。"
+  },
+  {
+    "id": "dns_failure",
+    "title": "DNS 解析失败（模拟）",
+    "fault": "dns_failure",
+    "source": "synthetic_fixture",
+    "expected": "dns_failure",
+    "incident": "用户输入网址后无法访问，尚未收集可用的连接证据。",
+    "decisive_tool": "check_dns",
+    "criterion": "模拟 NXDOMAIN；解析失败后不应继续 TCP 或 HTTP。"
+  },
+  {
+    "id": "tcp_failure",
+    "title": "本地端口未监听",
+    "fault": "tcp_failure",
+    "source": "live_local_lab",
+    "expected": "tcp_failure",
+    "incident": "目标网页无法打开，请核实访问路径走到了哪一阶段。",
+    "decisive_tool": "check_tcp",
+    "criterion": "已知本地端口已保留且未监听，TCP 连接失败。不得据此认定防火墙故障。"
+  },
+  {
+    "id": "tls_failure",
+    "title": "HTTPS 误连 HTTP 服务",
+    "fault": "tls_failure",
+    "source": "live_local_lab",
+    "expected": "tls_failure",
+    "incident": "用户报告 HTTPS 页面打不开，浏览器提示信息未提供。",
+    "decisive_tool": "check_http",
+    "criterion": "同一端口 TCP 成功，但实验服务只支持明文 HTTP，HTTPS 握手失败。"
+  },
+  {
+    "id": "http_error",
+    "title": "服务返回 HTTP 503",
+    "fault": "http_error",
+    "source": "live_local_lab",
+    "expected": "http_error",
+    "incident": "用户报告网页打不开。有同事猜测是链路拥塞，请用本次观测核对。",
+    "decisive_tool": "check_http",
+    "criterion": "实验端点返回 HTTP 503。若 slow=false，反驳本次超过阈值的说法；无法排除其他时刻拥塞。"
+  },
+  {
+    "id": "slow_response",
+    "title": "响应头发送前等待 1.2 秒",
+    "fault": "slow_response",
+    "source": "live_local_lab",
+    "expected": "slow_response",
+    "incident": "用户称网站最终能打开，但等待明显变长，请核实。",
+    "decisive_tool": "check_http",
+    "criterion": "服务发送响应头前等待约 1.2 秒，HTTP 200 且实测等待达到 800 ms 阈值。"
+  },
+  {
+    "id": "insufficient_evidence",
+    "title": "HTTP 检查缺失（模拟）",
+    "fault": "insufficient_evidence",
+    "source": "synthetic_fixture",
+    "expected": "insufficient_evidence",
+    "incident": "用户报告无法访问，同事称目标端口能连接，请独立核实。",
+    "decisive_tool": "check_http",
+    "criterion": "模拟中 DNS 与 TCP 成功，HTTP 观测缺失；应说明证据不足并建议补采。"
+  }
+]

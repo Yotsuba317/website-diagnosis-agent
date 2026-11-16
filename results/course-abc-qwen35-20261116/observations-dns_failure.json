@@ -1,0 +1,20 @@
+{
+  "target": {
+    "url": "http://fixture.test/",
+    "host": "fixture.test",
+    "port": 80,
+    "scheme": "http",
+    "path": "/"
+  },
+  "observations": {
+    "check_dns": {
+      "source": "synthetic_fixture",
+      "observed_at": "2026-11-15T17:28:19.785+00:00",
+      "vantage_point": "explicit synthetic teaching fixture",
+      "status": "error",
+      "error_type": "dns_resolution_failed",
+      "detail": "Simulated NXDOMAIN",
+      "elapsed_ms": 12
+    }
+  }
+}

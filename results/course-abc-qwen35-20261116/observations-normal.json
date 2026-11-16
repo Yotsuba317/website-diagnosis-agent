@@ -1,0 +1,53 @@
+{
+  "target": {
+    "url": "http://127.0.0.1:63514/",
+    "host": "127.0.0.1",
+    "port": 63514,
+    "scheme": "http",
+    "path": "/"
+  },
+  "observations": {
+    "check_dns": {
+      "status": "ok",
+      "addresses": [
+        "127.0.0.1"
+      ],
+      "ip_literal": true,
+      "elapsed_ms": 0.0,
+      "tool": "check_dns",
+      "observed_at": "2026-11-15T17:28:02.326+00:00",
+      "source": "live_probe",
+      "vantage_point": "machine running this program; direct connection; no proxy"
+    },
+    "check_tcp": {
+      "status": "ok",
+      "address": "127.0.0.1",
+      "port": 63514,
+      "elapsed_ms": 0.53,
+      "previous_attempts": [],
+      "tool": "check_tcp",
+      "observed_at": "2026-11-15T17:28:02.327+00:00",
+      "source": "live_probe",
+      "vantage_point": "machine running this program; direct connection; no proxy"
+    },
+    "check_http": {
+      "status": "ok",
+      "http_status": 200,
+      "tcp_connect_ms": 0.33,
+      "scheme": "http",
+      "tls_checked": false,
+      "http_error": false,
+      "tls_ms": 0.0,
+      "response_wait_ms": 0.49,
+      "total_ms": 0.83,
+      "slow_threshold_ms": 800,
+      "slow": false,
+      "body_checked": false,
+      "redirect_followed": false,
+      "tool": "check_http",
+      "observed_at": "2026-11-15T17:28:02.328+00:00",
+      "source": "live_probe",
+      "vantage_point": "machine running this program; direct connection; no proxy"
+    }
+  }
+}

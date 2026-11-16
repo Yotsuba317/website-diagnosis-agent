@@ -1,0 +1,36 @@
+{
+  "target": {
+    "url": "http://fixture.test/",
+    "host": "fixture.test",
+    "port": 80,
+    "scheme": "http",
+    "path": "/"
+  },
+  "observations": {
+    "check_dns": {
+      "source": "synthetic_fixture",
+      "observed_at": "2026-11-15T17:29:17.916+00:00",
+      "vantage_point": "explicit synthetic teaching fixture",
+      "status": "ok",
+      "addresses": [
+        "192.0.2.10"
+      ],
+      "elapsed_ms": 5
+    },
+    "check_tcp": {
+      "source": "synthetic_fixture",
+      "observed_at": "2026-11-15T17:29:17.916+00:00",
+      "vantage_point": "explicit synthetic teaching fixture",
+      "status": "ok",
+      "port": 80,
+      "elapsed_ms": 6
+    },
+    "check_http": {
+      "source": "synthetic_fixture",
+      "observed_at": "2026-11-15T17:29:17.916+00:00",
+      "vantage_point": "explicit synthetic teaching fixture",
+      "status": "unavailable",
+      "detail": "HTTP probe observation missing"
+    }
+  }
+}

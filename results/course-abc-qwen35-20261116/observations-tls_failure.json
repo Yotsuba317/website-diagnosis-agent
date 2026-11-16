@@ -1,0 +1,44 @@
+{
+  "target": {
+    "url": "https://127.0.0.1:57796/",
+    "host": "127.0.0.1",
+    "port": 57796,
+    "scheme": "https",
+    "path": "/"
+  },
+  "observations": {
+    "check_dns": {
+      "status": "ok",
+      "addresses": [
+        "127.0.0.1"
+      ],
+      "ip_literal": true,
+      "elapsed_ms": 0.0,
+      "tool": "check_dns",
+      "observed_at": "2026-11-15T17:28:34.137+00:00",
+      "source": "live_probe",
+      "vantage_point": "machine running this program; direct connection; no proxy"
+    },
+    "check_tcp": {
+      "status": "ok",
+      "address": "127.0.0.1",
+      "port": 57796,
+      "elapsed_ms": 0.39,
+      "previous_attempts": [],
+      "tool": "check_tcp",
+      "observed_at": "2026-11-15T17:28:34.138+00:00",
+      "source": "live_probe",
+      "vantage_point": "machine running this program; direct connection; no proxy"
+    },
+    "check_http": {
+      "status": "error",
+      "error_type": "tls_error",
+      "stage": "tls",
+      "detail": "[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)",
+      "tool": "check_http",
+      "observed_at": "2026-11-15T17:28:34.197+00:00",
+      "source": "live_probe",
+      "vantage_point": "machine running this program; direct connection; no proxy"
+    }
+  }
+}
